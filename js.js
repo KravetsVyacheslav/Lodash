@@ -3,12 +3,12 @@
 function resizeImage(event) {
   const sliderValue = event.target.value;
   const image = document.querySelector(".slider__image");
-  const newSize = 100 + sliderValue * 3;
-  image.style.width = `${newSize}px`;
-  image.style.height = `${newSize}px`;
+  const scale = 0.5 + (sliderValue / 100) * 1.5;
+  image.style.transform = `scale(${scale})`;
 }
 
 const debounceResizeImage = _.debounce(resizeImage, 100);
+
 document
   .querySelector(".slider__input")
   .addEventListener("input", debounceResizeImage);
